@@ -5,52 +5,32 @@
 
 package stdlib
 
-/** Scala fuses object-oriented and functional programming in a statically typed programming language.
+/** Exercises for the /ch/open Scala Workshop.
   *
-  * @param name std_lib
+  * @param name Scala_Workshop
   */
 object StdLib extends org.scalaexercises.definitions.Library {
-  override def owner = "scala-exercises"
+  override def owner = "misto"
   override def repository = "exercises-stdlib"
 
   override def color = Some("#26525B")
 
   override def sections = List(
     Asserts,
-    Classes,
-    Options,
-    Objects,
-    Tuples,
-    HigherOrderFunctions,
+    ValAndVar,
+    LiteralBooleans,
     Lists,
-    Maps,
-    Sets,
-    Formatting,
+    Tuples,
     PatternMatching,
     CaseClasses,
+    Sets,
+    Maps,
     Ranges,
-    PartiallyAppliedFunctions,
-    PartialFunctions,
-    Implicits,
-    Traits,
-    ForExpressions,
-    InfixPrefixandPostfixOperators,
-    InfixTypes,
-    SequencesandArrays,
-    Iterables,
+    Options,
+    HigherOrderFunctions,
     Traversables,
-    NamedandDefaultArguments,
-    Extractors,
-    ByNameParameter,
-    RepeatedParameters,
-    ParentClasses,
-    EmptyValues,
-    TypeSignatures,
-    UniformAccessPrinciple,
-    LiteralBooleans,
-    LiteralNumbers,
-    LiteralStrings,
-    TypeVariance,
-    Enumerations
+    Iterables,
+    SequencesandArrays,
+    PartiallyAppliedFunctions
   )
 }

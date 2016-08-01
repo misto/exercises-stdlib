@@ -3,7 +3,7 @@ lazy val stdlib = (project in file("."))
 .enablePlugins(ExerciseCompilerPlugin)
 .settings(
   organization := "org.scala-exercises",
-  name         := "exercises-stdlib",
+  name         := "exercises-intro",
   scalaVersion := "2.11.7",
   version := "0.2.2-SNAPSHOT",
   resolvers ++= Seq(

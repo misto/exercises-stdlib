@@ -58,7 +58,7 @@ object Traversables extends FlatSpec with Matchers with org.scalaexercises.defin
     */
   def flatMapOfOptionsTraversables(res0: List[Int]) {
     val list = List(1, 2, 3, 4, 5)
-    val result = list.flatMap(it ⇒ if (it % 2 == 0) Some(it) else None)
+    val result = list.flatMap(it => if (it % 2 == 0) Some(it) else None)
     result should be(res0)
   }
 
@@ -67,7 +67,7 @@ object Traversables extends FlatSpec with Matchers with org.scalaexercises.defin
   def collectFunctionTraversables(res0: List[Int]) {
     val list = List(4, 6, 7, 8, 9, 13, 14)
     val result = list.collect {
-      case x: Int if (x % 2 == 0) ⇒ x * 3
+      case x: Int if (x % 2 == 0) => x * 3
     }
     result should be(res0)
   }
@@ -77,10 +77,10 @@ object Traversables extends FlatSpec with Matchers with org.scalaexercises.defin
   def collectFunctionIITraversables(res0: List[Int]) {
     val list = List(4, 6, 7, 8, 9, 13, 14)
     val partialFunction1: PartialFunction[Int, Int] = {
-      case x: Int if x % 2 == 0 ⇒ x * 3
+      case x: Int if x % 2 == 0 => x * 3
     }
     val partialFunction2: PartialFunction[Int, Int] = {
-      case y: Int if y % 2 != 0 ⇒ y * 4
+      case y: Int if y % 2 != 0 => y * 4
     }
     val result = list.collect(partialFunction1 orElse partialFunction2)
     result should be(res0)
@@ -91,7 +91,7 @@ object Traversables extends FlatSpec with Matchers with org.scalaexercises.defin
     */
   def foreachFunctionTraversables(res0: List[Int]) {
     val list = List(4, 6, 7, 8, 9, 13, 14)
-    list.foreach(num ⇒ println(num * 4))
+    list.foreach(num => println(num * 4))
     list should be(res0)
   }
 
@@ -363,23 +363,23 @@ object Traversables extends FlatSpec with Matchers with org.scalaexercises.defin
     val array = Array(87, 44, 5, 4, 200, 10, 39, 100)
 
     val oddAndSmallPartial: PartialFunction[Int, String] = {
-      case x: Int if x % 2 != 0 && x < 100 ⇒ "Odd and less than 100"
+      case x: Int if x % 2 != 0 && x < 100 => "Odd and less than 100"
     }
 
     val evenAndSmallPartial: PartialFunction[Int, String] = {
-      case x: Int if x != 0 && x % 2 == 0 && x < 100 ⇒ "Even and less than 100"
+      case x: Int if x != 0 && x % 2 == 0 && x < 100 => "Even and less than 100"
     }
 
     val negativePartial: PartialFunction[Int, String] = {
-      case x: Int if x < 0 ⇒ "Negative Number"
+      case x: Int if x < 0 => "Negative Number"
     }
 
     val largePartial: PartialFunction[Int, String] = {
-      case x: Int if x > 99 ⇒ "Large Number"
+      case x: Int if x > 99 => "Large Number"
     }
 
     val zeroPartial: PartialFunction[Int, String] = {
-      case x: Int if x == 0 ⇒ "Zero"
+      case x: Int if x == 0 => "Zero"
     }
 
     val result = array groupBy {
@@ -425,12 +425,12 @@ object Traversables extends FlatSpec with Matchers with org.scalaexercises.defin
   def foldLeftFunctionTraversables(res0: Int, res1: Int, res2: Int, res3: Int, res4: Int) {
     val list = List(5, 4, 3, 2, 1)
     val result = (0 /: list) {
-      (`running total`, `next element`) ⇒ `running total` - `next element`
+      (`running total`, `next element`) => `running total` - `next element`
     }
     result should be(res0)
 
     val result2 = list.foldLeft(0) {
-      (`running total`, `next element`) ⇒ `running total` - `next element`
+      (`running total`, `next element`) => `running total` - `next element`
     }
     result2 should be(res1)
 
@@ -450,12 +450,12 @@ object Traversables extends FlatSpec with Matchers with org.scalaexercises.defin
   def foldRightFunctionTraversables(res0: Int, res1: Int, res2: Int, res3: Int, res4: Int) {
     val list = List(5, 4, 3, 2, 1)
     val result = (list :\ 0) {
-      (`next element`, `running total`) ⇒ `next element` - `running total`
+      (`next element`, `running total`) => `next element` - `running total`
     }
     result should be(res0)
 
     val result2 = list.foldRight(0) {
-      (`next element`, `running total`) ⇒ `next element` - `running total`
+      (`next element`, `running total`) => `next element` - `running total`
     }
     result2 should be(res1)
 
@@ -556,7 +556,7 @@ object Traversables extends FlatSpec with Matchers with org.scalaexercises.defin
     val stringBuilder = new StringBuilder()
     val list = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15)
     stringBuilder.append("I want all numbers 6-12: ")
-    list.filter(it ⇒ it > 5 && it < 13).addString(stringBuilder, ",")
+    list.filter(it => it > 5 && it < 13).addString(stringBuilder, ",")
     stringBuilder.mkString should be(res0)
   }
 

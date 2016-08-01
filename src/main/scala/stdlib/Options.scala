@@ -59,14 +59,14 @@ object Options extends FlatSpec with Matchers with org.scalaexercises.definition
   def matchOptions(res0: Double, res1: Double) {
     val someValue: Option[Double] = Some(20.0)
     val value = someValue match {
-      case Some(v) ⇒ v
-      case None    ⇒ 0.0
+      case Some(v) => v
+      case None    => 0.0
     }
     value should be(res0)
     val noValue: Option[Double] = None
     val value1 = noValue match {
-      case Some(v) ⇒ v
-      case None    ⇒ 0.0
+      case Some(v) => v
+      case None    => 0.0
     }
     value1 should be(res1)
   }

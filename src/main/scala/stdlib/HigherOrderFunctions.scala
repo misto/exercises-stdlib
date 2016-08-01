@@ -12,9 +12,9 @@ object HigherOrderFunctions extends FlatSpec with Matchers with org.scalaexercis
     * Scala supports first-class functions, which means you can express functions in function literal syntax, i.e.,` (x: Int) => x + 1`, and that functions can be represented by objects, which are called function values.
     */
   def meetLambdaHigherOrderFunctions(res0: Int, res1: Int, res2: Int, res3: Int, res4: Int, res5: Int) {
-    def lambda = { x: Int ⇒ x + 1 }
-    def lambda2 = (x: Int) ⇒ x + 1
-    val lambda3 = (x: Int) ⇒ x + 1
+    def lambda = { x: Int => x + 1 }
+    def lambda2 = (x: Int) => x + 1
+    val lambda3 = (x: Int) => x + 1
 
     val lambda4 = new Function1[Int, Int] {
       def apply(v1: Int): Int = v1 + 1
@@ -41,7 +41,7 @@ object HigherOrderFunctions extends FlatSpec with Matchers with org.scalaexercis
   /** An anonymous function can also take on a different look by taking out the brackets
     */
   def differentLookHigherOrderFunctions(res0: Int) {
-    def lambda = (x: Int) ⇒ x + 1
+    def lambda = (x: Int) => x + 1
     def result = lambda(5)
     result should be(res0)
   }
@@ -56,7 +56,7 @@ object HigherOrderFunctions extends FlatSpec with Matchers with org.scalaexercis
     var incrementer = 1
 
     def closure = {
-      x: Int ⇒ x + incrementer
+      x: Int => x + incrementer
     }
 
     val result1 = closure(10)
@@ -71,10 +71,10 @@ object HigherOrderFunctions extends FlatSpec with Matchers with org.scalaexercis
   /** We can take that closure and throw into a method and it will still hold the environment
     */
   def holdEnvironmentHigherOrderFunctions(res0: Int, res1: Int) {
-    def summation(x: Int, y: Int ⇒ Int) = y(x)
+    def summation(x: Int, y: Int => Int) = y(x)
 
     var incrementer = 3
-    def closure = (x: Int) ⇒ x + incrementer
+    def closure = (x: Int) => x + incrementer
 
     val result = summation(10, closure)
     result should be(res0)
@@ -84,42 +84,6 @@ object HigherOrderFunctions extends FlatSpec with Matchers with org.scalaexercis
     result2 should be(res1)
   }
 
-  /** Function returning another function:
-    */
-  def returningFunctionHigherOrderFunctions(res0: Boolean, res1: Int, res2: Int) {
-    def addWithoutSyntaxSugar(x: Int) = {
-      new Function1[Int, Int]() {
-        def apply(y: Int): Int = x + y
-      }
-    }
-    addWithoutSyntaxSugar(1).
-      isInstanceOf[Function1[Int, Int]] should be(res0)
-
-    addWithoutSyntaxSugar(2)(3) should be(res1)
-
-    def fiveAdder = addWithoutSyntaxSugar(5)
-    fiveAdder(5) should be(res2)
-  }
-
-  /** Function returning another function using an anonymous function:
-    */
-  def returningAnonymousFunctionHigherOrderFunctions(res0: Boolean, res1: Int, res2: Int) {
-    def addWithSyntaxSugar(x: Int) = (y: Int) ⇒ x + y
-
-    addWithSyntaxSugar(1).isInstanceOf[Function1[Int, Int]] should be(res0)
-    addWithSyntaxSugar(2)(3) should be(res1)
-
-    def fiveAdder = addWithSyntaxSugar(5)
-    fiveAdder(5) should be(res2)
-  }
-
-  /** `isInstanceOf` is the same as `instanceof` in java, but in this case the parameter types can be *blanked out* using existential types with a single underline, since parameter type are unknown at runtime.
-    */
-  def isInstanceOfMethodHigherOrderFunctions(res0: Boolean) {
-    def addWithSyntaxSugar(x: Int) = (y: Int) ⇒ x + y
-
-    addWithSyntaxSugar(1).isInstanceOf[Function1[_, _]] should be(res0)
-  }
 
   /** Function taking another function as parameter. Helps in composing functions.
     *
@@ -130,14 +94,14 @@ object HigherOrderFunctions extends FlatSpec with Matchers with org.scalaexercis
       _.toUpperCase
     }
 
-    def makeWhatEverYouLike(xs: List[String], sideEffect: String ⇒ String) = {
+    def makeWhatEverYouLike(xs: List[String], sideEffect: String => String) = {
       xs map sideEffect
     }
 
     makeUpper(List("abc", "xyz", "123")) should be(res0)
 
     makeWhatEverYouLike(List("ABC", "XYZ", "123"), {
-      x ⇒ x.toLowerCase
+      x => x.toLowerCase
     }) should be(res1)
 
     //using it inline

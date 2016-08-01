@@ -32,13 +32,13 @@ object PatternMatching extends FlatSpec with Matchers with org.scalaexercises.de
     val stuff = "blue"
 
     val myStuff = stuff match {
-      case "red" ⇒
+      case "red" =>
         println("RED"); 1
-      case "blue" ⇒
+      case "blue" =>
         println("BLUE"); 2
-      case "green" ⇒
+      case "green" =>
         println("GREEN"); 3
-      case _ ⇒ println(stuff); 0 //case _ will trigger if all other cases fail.
+      case _ => println(stuff); 0 //case _ will trigger if all other cases fail.
     }
 
     myStuff should be(res0)
@@ -50,23 +50,45 @@ object PatternMatching extends FlatSpec with Matchers with org.scalaexercises.de
     val stuff = "blue"
 
     val myStuff = stuff match {
-      case "red"   ⇒ (255, 0, 0)
-      case "green" ⇒ (0, 255, 0)
-      case "blue"  ⇒ (0, 0, 255)
-      case _       ⇒ println(stuff); 0
+      case "red"   => (255, 0, 0)
+      case "green" => (0, 255, 0)
+      case "blue"  => (0, 0, 255)
+      case _       => println(stuff); 0
     }
 
     myStuff should be(res0, res1, res2)
   }
 
+    /** Pattern matching can match complex expressions:
+      */
+  def complexExpressionsPatternMatching(res0: String, res1: String, res2: String, res3: String, res4: String, res5: String, res6: String, res7: String) {
+    def patternMatching(any: Any) = {
+      any match {
+        case i: Int               => "Int: " + i
+        case f: Float if f > 10.0 => "Float: " + f
+        case "s"                  => "String: s"
+        case (s: String, _)       => "String: " + s
+        case head :: tail         => "Non-empty list"
+        case any                  => any.toString
+      }
+    }
+    patternMatching(10) shouldBe res0
+    patternMatching(1f) shouldBe res1
+    patternMatching(20f) shouldBe res2
+    patternMatching(("s", 5)) shouldBe res3
+    patternMatching(List(1, 2)) shouldBe res4
+    patternMatching(List(1)) shouldBe res5
+    patternMatching(List()) shouldBe res6
+  }
+
   /** Pattern matching can match complex expressions:
     */
-  def complexExpressionsPatternMatching(res0: String) {
+  def complexExpressionsPatternMatching2(res0: String) {
     def goldilocks(expr: Any) = expr match {
-      case ("porridge", "Papa") ⇒ "Papa eating porridge"
-      case ("porridge", "Mama") ⇒ "Mama eating porridge"
-      case ("porridge", "Baby") ⇒ "Baby eating porridge"
-      case _                    ⇒ "what?"
+      case ("porridge", "Papa") => "Papa eating porridge"
+      case ("porridge", "Mama") => "Mama eating porridge"
+      case ("porridge", "Baby") => "Baby eating porridge"
+      case _                    => "what?"
     }
 
     goldilocks(("porridge", "Mama")) should be(res0)
@@ -76,10 +98,10 @@ object PatternMatching extends FlatSpec with Matchers with org.scalaexercises.de
     */
   def wildcardParsPatternMatching(res0: String, res1: String) {
     def goldilocks(expr: Any) = expr match {
-      case ("porridge", _)   ⇒ "eating"
-      case ("chair", "Mama") ⇒ "sitting"
-      case ("bed", "Baby")   ⇒ "sleeping"
-      case _                 ⇒ "what?"
+      case ("porridge", _)   => "eating"
+      case ("chair", "Mama") => "sitting"
+      case ("bed", "Baby")   => "sleeping"
+      case _                 => "what?"
     }
 
     goldilocks(("porridge", "Papa")) should be(res0)
@@ -90,10 +112,10 @@ object PatternMatching extends FlatSpec with Matchers with org.scalaexercises.de
     */
   def substitutePartsPatternMatching(res0: String, res1: String) {
     def goldilocks(expr: Any) = expr match {
-      case ("porridge", bear) ⇒ bear + " said someone's been eating my porridge"
-      case ("chair", bear)    ⇒ bear + " said someone's been sitting in my chair"
-      case ("bed", bear)      ⇒ bear + " said someone's been sleeping in my bed"
-      case _                  ⇒ "what?"
+      case ("porridge", bear) => bear + " said someone's been eating my porridge"
+      case ("chair", bear)    => bear + " said someone's been sitting in my chair"
+      case ("bed", bear)      => bear + " said someone's been sleeping in my bed"
+      case _                  => "what?"
     }
 
     goldilocks(("porridge", "Papa")) should be(res0)
@@ -128,10 +150,10 @@ object PatternMatching extends FlatSpec with Matchers with org.scalaexercises.de
     val foodItem = "porridge"
 
     def goldilocks(expr: Any) = expr match {
-      case (`foodItem`, _)   ⇒ "eating"
-      case ("chair", "Mama") ⇒ "sitting"
-      case ("bed", "Baby")   ⇒ "sleeping"
-      case _                 ⇒ "what?"
+      case (`foodItem`, _)   => "eating"
+      case ("chair", "Mama") => "sitting"
+      case ("bed", "Baby")   => "sleeping"
+      case _                 => "what?"
     }
 
     goldilocks(("porridge", "Papa")) should be(res0)
@@ -144,8 +166,8 @@ object PatternMatching extends FlatSpec with Matchers with org.scalaexercises.de
     */
   def stableVariablePatternMatching(res0: Boolean, res1: Boolean, res2: Boolean) {
     def patternEquals(i: Int, j: Int) = j match {
-      case `i` ⇒ true
-      case _   ⇒ false
+      case `i` => true
+      case _   => false
     }
     patternEquals(3, 3) should be(res0)
     patternEquals(7, 9) should be(res1)
@@ -156,8 +178,8 @@ object PatternMatching extends FlatSpec with Matchers with org.scalaexercises.de
     */
   def againstListsPatternMatching(res0: Int) {
     val secondElement = List(1, 2, 3) match {
-      case x :: xs ⇒ xs.head
-      case _       ⇒ 0
+      case x :: xs => xs.head
+      case _       => 0
     }
 
     secondElement should be(res0)
@@ -167,8 +189,8 @@ object PatternMatching extends FlatSpec with Matchers with org.scalaexercises.de
     */
   def againstListsIIPatternMatching(res0: Int) {
     val secondElement = List(1, 2, 3) match {
-      case x :: y :: xs ⇒ y
-      case _            ⇒ 0
+      case x :: y :: xs => y
+      case _            => 0
     }
 
     secondElement should be(res0)
@@ -178,8 +200,8 @@ object PatternMatching extends FlatSpec with Matchers with org.scalaexercises.de
     */
   def againstListsIIIPatternMatching(res0: Int) {
     val secondElement = List(1) match {
-      case x :: y :: xs ⇒ y
-      case _            ⇒ 0
+      case x :: y :: xs => y
+      case _            => 0
     }
 
     secondElement should be(res0)
@@ -189,8 +211,8 @@ object PatternMatching extends FlatSpec with Matchers with org.scalaexercises.de
     */
   def againstListsIVPatternMatching(res0: Int) {
     val r = List(1, 2, 3) match {
-      case x :: y :: Nil ⇒ y
-      case _             ⇒ 0
+      case x :: y :: Nil => y
+      case _             => 0
     }
 
     r should be(res0)

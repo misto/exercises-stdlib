@@ -32,14 +32,14 @@ object SequencesandArrays extends FlatSpec with Matchers with org.scalaexercises
   /** You can create a sequence from a for comprehension:
     */
   def fromForComprehensionSequencesandArrays(res0: List[Int]) {
-    val s = for (v ← 1 to 4) yield v
+    val s = for (v <- 1 to 4) yield v
     s.toList should be(res0)
   }
 
   /** You can create a sequence from a for comprehension with a condition:
     */
   def withConditionSequencesandArrays(res0: List[Int]) {
-    val s = for (v ← 1 to 10 if v % 3 == 0) yield v
+    val s = for (v <- 1 to 10 if v % 3 == 0) yield v
     s.toList should be(res0)
   }
 
