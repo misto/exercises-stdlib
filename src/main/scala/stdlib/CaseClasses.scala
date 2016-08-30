@@ -51,15 +51,14 @@ object CaseClasses extends FlatSpec with Matchers with org.scalaexercises.defini
     (d2 == d3) should be(res2)
   }
 
-  /** toStringMethodCaseClasses
-    *
-    * Case classes have a convenient toString method defined:
-    */
-  def toStringMethodCaseClasses(res0: String) {
+  /** Case classes have a convenient toString method defined:
+
+  {{{
     case class Dog(name: String, breed: String)
     val d1 = Dog("Scooby", "Doberman")
-    d1.toString should be(res0)
-  }
+    d1.toString // prints Dog("Scooby","Doberman")
+  }}}
+    */
 
   /** Case classes have automatic properties:
     */
@@ -129,20 +128,6 @@ object CaseClasses extends FlatSpec with Matchers with org.scalaexercises.defini
     (p1 == p4) should be(res12)
   }
 
-  /** Case classes can be disassembled to their constituent parts as a tuple:
-    */
-  def asTupleCaseClasses(res0: String, res1: String, res2: Int, res3: String) {
-    case class Person(first: String, last: String, age: Int = 0, ssn: String = "")
-    val p1 = Person("Fred", "Jones", 23, "111-22-3333")
-
-    val parts = Person.unapply(p1).get // this seems weird, but it's critical to other features of Scala
-
-    parts._1 should be(res0)
-    parts._2 should be(res1)
-    parts._3 should be(res2)
-    parts._4 should be(res3)
-  }
-
   /** Case classes are Serializable
     */
   def serializableCaseClasses(res0: Boolean, res1: Boolean) {
@@ -159,7 +144,7 @@ object CaseClasses extends FlatSpec with Matchers with org.scalaexercises.defini
 
   /** Case classes can be used in pattern matching
     */
-  def serializableCaseClasses(res0: Boolean) {
+  def caseClassesPatternMatching(res0: Boolean) {
     case class Person(name: String, alter: Int)
     def matchAPerson(person: Person) = {
       person match {

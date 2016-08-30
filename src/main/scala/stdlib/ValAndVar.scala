@@ -39,7 +39,7 @@ object ValAndVar extends FlatSpec with Matchers with org.scalaexercises.definiti
     isWeekend shouldBe res0
   }
 
-  /** Types are inferred from the tight-hand side of the assignment, but for
+  /** Types are inferred from the right-hand side of the assignment, but for
     * clarity they can also be specified:
     */
   def valWithTypeAscription(res0: Int) {

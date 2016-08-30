@@ -21,16 +21,18 @@ object StdLib extends org.scalaexercises.definitions.Library {
     LiteralBooleans,
     Lists,
     Tuples,
+    ControlStructures,
     PatternMatching,
-    CaseClasses,
-    Sets,
-    Maps,
-    Ranges,
+    ListMethods,
     Options,
+    Ranges,
+    Sets,
+    CaseClasses,
     HigherOrderFunctions,
     Traversables,
     Iterables,
     SequencesandArrays,
+    Maps,
     PartiallyAppliedFunctions
   )
 }

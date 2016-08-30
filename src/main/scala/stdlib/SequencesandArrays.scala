@@ -2,7 +2,7 @@ package stdlib
 
 import org.scalatest._
 
-/** @param name sequences_and_arrays
+/** @param name sequences_and_arrays_(Bonus)
   *
   */
 object SequencesandArrays extends FlatSpec with Matchers with org.scalaexercises.definitions.Section {

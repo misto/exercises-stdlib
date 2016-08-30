@@ -2,11 +2,14 @@ package stdlib
 
 import org.scalatest._
 
-/** @param name asserts
+/** @param name introduction
   */
 object Asserts extends FlatSpec with Matchers with org.scalaexercises.definitions.Section {
 
-  /** ScalaTest makes three assertions available by default in any style trait. You can use:
+  /** Before we can start, we need a quick introduction to ScalaTest, the framework
+    * that verifies your answers to the exercises.
+    *
+    * ScalaTest makes three assertions available by default in any style trait. You can use:
     *
     *  - `assert` for general assertions;
     *  - `assertResult` to differentiate expected from actual values;
@@ -30,6 +33,8 @@ object Asserts extends FlatSpec with Matchers with org.scalaexercises.definition
     * {{{
     * result should be (3)
     * result shouldBe 3       // no parentheses required
+    * result should equal(3)  // can customize equality
+    * result shouldEqual 3    // can customize equality, no parentheses required
     * }}}
     *
     * Come on, your turn: true and false values can be compared with should matchers

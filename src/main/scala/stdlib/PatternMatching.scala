@@ -61,15 +61,15 @@ object PatternMatching extends FlatSpec with Matchers with org.scalaexercises.de
 
     /** Pattern matching can match complex expressions:
       */
-  def complexExpressionsPatternMatching(res0: String, res1: String, res2: String, res3: String, res4: String, res5: String, res6: String, res7: String) {
+  def complexExpressionsPatternMatching(res0: String, res1: String, res2: String, res3: String, res4: String, res5: String, res6: String) {
     def patternMatching(any: Any) = {
       any match {
-        case i: Int               => "Int: " + i
-        case f: Float if f > 10.0 => "Float: " + f
+        case i: Int               => "Int"
+        case f: Float if f > 10.0 => "Float"
         case "s"                  => "String: s"
         case (s: String, _)       => "String: " + s
         case head :: tail         => "Non-empty list"
-        case any                  => any.toString
+        case any                  => "the default case"
       }
     }
     patternMatching(10) shouldBe res0

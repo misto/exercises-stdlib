@@ -2,7 +2,7 @@ package stdlib
 
 import org.scalatest._
 
-/** @param name higher_order_functions
+/** @param name higher_order_functions_(Bonus)
   *
   */
 object HigherOrderFunctions extends FlatSpec with Matchers with org.scalaexercises.definitions.Section {

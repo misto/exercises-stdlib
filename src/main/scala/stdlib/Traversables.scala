@@ -5,21 +5,21 @@ import scala.language.postfixOps
 
 import Stream.cons
 
-/** @param name traversables
+/** @param name traversables_(Bonus)
   */
 object Traversables extends FlatSpec with Matchers with org.scalaexercises.definitions.Section {
 
-  /** At the top of the collection hierarchy is trait *Traversable*. Its only abstract operation is `foreach`:
+  /** At the top of the collection hierarchy is trait `Traversable` Its only abstract operation is `foreach`:
     *
     * {{{
     * def foreach[U](f: Elem => U)
     * }}}
     *
-    * Collection classes that implement *Traversable* just need to define this method; all other methods can be inherited from *Traversable*.
+    * Collection classes that implement Traversable just need to define this method; all other methods can be inherited from Traversable.
     *
     * The `foreach` method is meant to traverse all elements of the collection, and apply the given operation, `f`, to each element. The type of the operation is `Elem => U`, where `Elem` is the type of the collection's elements and `U` is an arbitrary result type. The invocation of `f` is done for its side effect only; in fact any function result of `f` is discarded by `foreach`.
     *
-    * Traversables are the superclass of *Lists*, *Arrays*, *Maps*, *Sets*, *Streams*, and more.  The methods involved can be applied to each other in a different type. `++` appends two Traversables together.
+    * Traversables are the superclass of Lists, Arrays, Maps, Sets, Streams, and more.  The methods involved can be applied to each other in a different type. `++` appends two Traversables together.
     */
   def topOfCollectionTraversables(res0: Int, res1: Int) {
     val set = Set(1, 9, 10, 22)
@@ -31,7 +31,7 @@ object Traversables extends FlatSpec with Matchers with org.scalaexercises.defin
     result2.size should be(res1)
   }
 
-  /** `map` will apply the given function on all elements of a *Traversable* and return a new collection of the result.
+  /** `map` will apply the given function on all elements of a `Traversable` and return a new collection of the result.
     */
   def mapFunctionTraversables(res0: Option[Int]) {
     val set = Set(1, 3, 4, 6)
@@ -39,14 +39,14 @@ object Traversables extends FlatSpec with Matchers with org.scalaexercises.defin
     result.lastOption should be(res0)
   }
 
-  /** `flatten` will smash all child *Traversables* within a *Traversable*
+  /** `flatten` will smash all child *Traversables* within a `Traversable`
     */
   def flattenFunctionTraversables(res0: List[Int]) {
     val list = List(List(1), List(2, 3, 4), List(5, 6, 7), List(8, 9, 10))
     list.flatten should be(res0)
   }
 
-  /** `flatMap` will not only apply the given function on all elements of a *Traversable*, but all elements within the elements and `flatten` the results:
+  /** `flatMap` will not only apply the given function on all elements of a `Traversable`, but all elements within the elements and `flatten` the results:
     */
   def flatMapFunctionTraversables(res0: List[Int]) {
     val list = List(List(1), List(2, 3, 4), List(5, 6, 7), List(8, 9, 10))
@@ -62,7 +62,7 @@ object Traversables extends FlatSpec with Matchers with org.scalaexercises.defin
     result should be(res0)
   }
 
-  /** `collect` will apply a partial function to all elements of a *Traversable* and will return a different collection. In this exercise, a case fragment is a partial function:
+  /** `collect` will apply a partial function to all elements of a `Traversable` and will return a different collection. In this exercise, a case fragment is a partial function:
     */
   def collectFunctionTraversables(res0: List[Int]) {
     val list = List(4, 6, 7, 8, 9, 13, 14)
@@ -72,7 +72,7 @@ object Traversables extends FlatSpec with Matchers with org.scalaexercises.defin
     result should be(res0)
   }
 
-  /** `collect` will apply a partial function to all elements of a *Traversable* and will return a different collection. In this exercise, two case fragments are chained to create a more robust result:
+  /** `collect` will apply a partial function to all elements of a `Traversable` and will return a different collection. In this exercise, two case fragments are chained to create a more robust result:
     */
   def collectFunctionIITraversables(res0: List[Int]) {
     val list = List(4, 6, 7, 8, 9, 13, 14)
@@ -86,7 +86,7 @@ object Traversables extends FlatSpec with Matchers with org.scalaexercises.defin
     result should be(res0)
   }
 
-  /** `foreach` will apply a function to all elements of a *Traversable*, but unlike
+  /** `foreach` will apply a function to all elements of a `Traversable`, but unlike
     * the `map` function, it will not return anything since the return type is `Unit`, which is like a `void` return type in *Java*, *C++*
     */
   def foreachFunctionTraversables(res0: List[Int]) {
@@ -95,7 +95,7 @@ object Traversables extends FlatSpec with Matchers with org.scalaexercises.defin
     list should be(res0)
   }
 
-  /** `toArray` will convert any *Traversable* to an `Array`, which is a special wrapper around a primitive *Java* array.
+  /** `toArray` will convert any `Traversable` to an `Array`, which is a special wrapper around a primitive *Java* array.
     */
   def toArrayFunctionTraversables(res0: Boolean) {
     val set = Set(4, 6, 7, 8, 9, 13, 14)
@@ -103,7 +103,7 @@ object Traversables extends FlatSpec with Matchers with org.scalaexercises.defin
     result.isInstanceOf[Array[Int]] should be(res0)
   }
 
-  /** `toList` will convert any *Traversable* to a `List`.
+  /** `toList` will convert any `Traversable` to a `List`.
     */
   def toListFunctionTraversables(res0: Boolean) {
     val set = Set(4, 6, 7, 8, 9, 13, 14)
@@ -120,7 +120,7 @@ object Traversables extends FlatSpec with Matchers with org.scalaexercises.defin
     result eq list should be(res0)
   }
 
-  /** `toIterable` will convert any *Traversable* to an *Iterable*. This is a base *trait* for all Scala collections that define an iterator method to step through one-by-one the collection's elements.
+  /** `toIterable` will convert any `Traversable` to an *Iterable*. This is a base *trait* for all Scala collections that define an iterator method to step through one-by-one the collection's elements.
     */
   def toIterableFunctionTraversables(res0: Boolean) {
     val set = Set(4, 6, 7, 8, 9, 13, 14)
@@ -128,7 +128,7 @@ object Traversables extends FlatSpec with Matchers with org.scalaexercises.defin
     result.isInstanceOf[Iterable[_]] should be(res0)
   }
 
-  /** `toSeq` will convert any *Traversable* to a *Seq* which is an ordered `Iterable`   and is the superclass to *List*, *Queues*, and *Vectors*. *Sequences* provide a method apply for indexing. Indices range from 0 up the length of a sequence.
+  /** `toSeq` will convert any `Traversable` to a *Seq* which is an ordered `Iterable`   and is the superclass to *List*, *Queues*, and *Vectors*. *Sequences* provide a method apply for indexing. Indices range from 0 up the length of a sequence.
     */
   def toSeqFunctionTraversables(res0: Boolean) {
     val set = Set(4, 6, 7, 8, 9, 13, 14)
@@ -136,7 +136,7 @@ object Traversables extends FlatSpec with Matchers with org.scalaexercises.defin
     result.isInstanceOf[Seq[_]] should be(res0)
   }
 
-  /** `toIndexedSeq` will convert any *Traversable* to an *IndexedSeq* which is an indexed sequence used in *Vectors* and *Strings*
+  /** `toIndexedSeq` will convert any `Traversable` to an *IndexedSeq* which is an indexed sequence used in *Vectors* and *Strings*
     */
   def toIndexedSeqFunctionTraversables(res0: Boolean) {
     val set = Set(4, 6, 7, 8, 9, 13, 14)
@@ -144,7 +144,7 @@ object Traversables extends FlatSpec with Matchers with org.scalaexercises.defin
     result.isInstanceOf[IndexedSeq[_]] should be(res0)
   }
 
-  /** `toStream` will convert any *Traversable* to a `Stream` which is a lazy list where elements are evaluated as they are needed.
+  /** `toStream` will convert any `Traversable` to a `Stream` which is a lazy list where elements are evaluated as they are needed.
     */
   def toStreamFunctionTraversables(res0: Boolean, res1: Stream[Int]) {
     val list = List(4, 6, 7, 8, 9, 13, 14)
@@ -153,7 +153,7 @@ object Traversables extends FlatSpec with Matchers with org.scalaexercises.defin
     (result take 3) should be(res1)
   }
 
-  /** `toSet` will convert any *Traversable* to a *Set* which is a collection of unordered, unique values.
+  /** `toSet` will convert any `Traversable` to a *Set* which is a collection of unordered, unique values.
     */
   def toSetFunctionTraversables(res0: Boolean) {
     val list = List(4, 6, 7, 8, 9, 13, 14)
@@ -161,10 +161,10 @@ object Traversables extends FlatSpec with Matchers with org.scalaexercises.defin
     result.isInstanceOf[Set[_]] should be(res0)
   }
 
-  /** `toMap` will convert any *Traversable* to a *Map*. How it's used depends on the original collection; if it's a *List* or *Seq*, it should be of parameterized type *Tuple2*.
+  /** `toMap` will convert any `Traversable` to a *Map*. How it's used depends on the original collection; if it's a *List* or *Seq*, it should be of parameterized type *Tuple2*.
     */
   def toMapFunctionTraversables(res0: Boolean) {
-    val list = List("Phoenix" → "Arizona", "Austin" → "Texas")
+    val list = List("Phoenix" -> "Arizona", "Austin" -> "Texas")
     val result = list.toMap
     result.isInstanceOf[Map[_, _]] should be(res0)
   }
@@ -172,7 +172,7 @@ object Traversables extends FlatSpec with Matchers with org.scalaexercises.defin
   /** `toMap` will convert a *Set* to a *Map*, it should be of parameterized type *Tuple2*.
     */
   def toMapFunctionIITraversables(res0: Boolean) {
-    val set = Set("Phoenix" → "Arizona", "Austin" → "Texas")
+    val set = Set("Phoenix" -> "Arizona", "Austin" -> "Texas")
     val result = set.toMap
     result.isInstanceOf[Map[_, _]] should be(res0)
   }
@@ -180,7 +180,7 @@ object Traversables extends FlatSpec with Matchers with org.scalaexercises.defin
   /** `isEmpty` is pretty self evident
     */
   def isEmptyFunctionTraversables(res0: Boolean, res1: Boolean) {
-    val map = Map("Phoenix" → "Arizona", "Austin" → "Texas")
+    val map = Map("Phoenix" -> "Arizona", "Austin" -> "Texas")
     map.isEmpty should be(res0)
 
     val set = Set()
@@ -190,7 +190,7 @@ object Traversables extends FlatSpec with Matchers with org.scalaexercises.defin
   /** `nonEmpty` is pretty self evident too
     */
   def nonEmptyFunctionTraversables(res0: Boolean, res1: Boolean) {
-    val map = Map("Phoenix" → "Arizona", "Austin" → "Texas")
+    val map = Map("Phoenix" -> "Arizona", "Austin" -> "Texas")
     map.nonEmpty should be(res0)
 
     val set = Set()
@@ -200,14 +200,14 @@ object Traversables extends FlatSpec with Matchers with org.scalaexercises.defin
   /** `size` provides the size of the traversable
     */
   def sizeFunctionTraversables(res0: Int) {
-    val map = Map("Phoenix" → "Arizona", "Austin" → "Texas")
+    val map = Map("Phoenix" -> "Arizona", "Austin" -> "Texas")
     map.size should be(res0)
   }
 
   /** `hasDefiniteSize` will return `true` if there is traversable that has a finite end, otherwise `false`.
     */
   def hasDefiniteSizeFunctionTraversables(res0: Boolean, res1: Boolean) {
-    val map = Map("Phoenix" → "Arizona", "Austin" → "Texas")
+    val map = Map("Phoenix" -> "Arizona", "Austin" -> "Texas")
     map.hasDefiniteSize should be(res0)
 
     val stream = cons(0, cons(1, Stream.empty))
@@ -286,7 +286,7 @@ object Traversables extends FlatSpec with Matchers with org.scalaexercises.defin
     list.take(3) should be(res0)
   }
 
-  /** `take` is used often with *Streams*, and *Streams* after all are *Traversable*.
+  /** `take` is used often with *Streams*, and *Streams* after all are `Traversable`.
     */
   def takeFunctionIITraversables(res0: List[Int]) {
     def streamer(v: Int): Stream[Int] = cons(v, streamer(v + 1))
@@ -294,7 +294,7 @@ object Traversables extends FlatSpec with Matchers with org.scalaexercises.defin
     (a take 3 toList) should be(res0)
   }
 
-  /** `drop` will take the rest of the *Traversable* except the number of elements given
+  /** `drop` will take the rest of the `Traversable` except the number of elements given
     */
   def dropFunctionTraversables(res0: List[Int]) {
     def streamer(v: Int): Stream[Int] = cons(v, streamer(v + 1))
@@ -316,21 +316,21 @@ object Traversables extends FlatSpec with Matchers with org.scalaexercises.defin
     list.dropWhile(_ < 100) should be(res0)
   }
 
-  /** `filter` will take out all elements that don't satisfy a predicate. An *Array* is also *Traversable*.
+  /** `filter` will take out all elements that don't satisfy a predicate. An *Array* is also `Traversable`.
     */
   def filterFunctionTraversables(res0: Array[Int]) {
     val array = Array(87, 44, 5, 4, 200, 10, 39, 100)
     array.filter(_ < 100) should be(res0)
   }
 
-  /** `filterNot` will take out all elements that satisfy a predicate. An *Array* is also *Traversable*.
+  /** `filterNot` will take out all elements that satisfy a predicate. An *Array* is also `Traversable`.
     */
   def filterNotFunctionTraversables(res0: Array[Int]) {
     val array = Array(87, 44, 5, 4, 200, 10, 39, 100)
     array.filterNot(_ < 100) should be(res0)
   }
 
-  /** `splitAt` will split a *Traversable* at a position, returning a 2 product   *Tuple*. `splitAt` is also defined as `(xs take n, xs drop n)`
+  /** `splitAt` will split a `Traversable` at a position, returning a 2 product   *Tuple*. `splitAt` is also defined as `(xs take n, xs drop n)`
     */
   def splitAtFunctionTraversables(res0: Array[Int], res1: Array[Int]) {
     val array = Array(87, 44, 5, 4, 200, 10, 39, 100)
@@ -339,7 +339,7 @@ object Traversables extends FlatSpec with Matchers with org.scalaexercises.defin
     result._2 should be(res1)
   }
 
-  /** `span` will split a *Traversable* according to predicate, returning a 2 product *Tuple*.  `span` is also defined as `(xs takeWhile p, xs dropWhile p)`
+  /** `span` will split a `Traversable` according to predicate, returning a 2 product *Tuple*.  `span` is also defined as `(xs takeWhile p, xs dropWhile p)`
     */
   def spanFunctionTraversables(res0: Array[Int], res1: Array[Int]) {
     val array = Array(87, 44, 5, 4, 200, 10, 39, 100)
@@ -348,7 +348,7 @@ object Traversables extends FlatSpec with Matchers with org.scalaexercises.defin
     result._2 should be(res1)
   }
 
-  /** `partition` will split a *Traversable* according to predicate, returning a 2 product *Tuple*. The left hand side contains the elements satisfied by the predicate whereas the right hand side contains those that `don't`. *Array* is *Traversable*, partition is also defined as `(xs filter p, xs filterNot p)`
+  /** `partition` will split a `Traversable` according to predicate, returning a 2 product *Tuple*. The left hand side contains the elements satisfied by the predicate whereas the right hand side contains those that `don't`. *Array* is `Traversable`, partition is also defined as `(xs filter p, xs filterNot p)`
     */
   def partitionFunctionTraversables(res0: Array[Int], res1: Array[Int]) {
     val array = Array(87, 44, 5, 4, 200, 10, 39, 100)
@@ -357,7 +357,7 @@ object Traversables extends FlatSpec with Matchers with org.scalaexercises.defin
     result._2 should be(res1)
   }
 
-  /** `groupBy` will categorize a *Traversable* according to a given function, and return a map with the results.  This exercise uses *Partial Function* chaining.
+  /** `groupBy` will categorize a `Traversable` according to a given function, and return a map with the results.  This exercise uses *Partial Function* chaining.
     */
   def groupByFunctionTraversables(res0: Int, res1: Int) {
     val array = Array(87, 44, 5, 4, 200, 10, 39, 100)
@@ -394,7 +394,7 @@ object Traversables extends FlatSpec with Matchers with org.scalaexercises.defin
     (result("Large Number") size) should be(res1)
   }
 
-  /** `forall` will determine if a predicate is valid for all members of a *Traversable*.
+  /** `forall` will determine if a predicate is valid for all members of a `Traversable`.
     */
   def forallFunctionTraversables(res0: Boolean) {
     val list = List(87, 44, 5, 4, 200, 10, 39, 100)
@@ -402,7 +402,7 @@ object Traversables extends FlatSpec with Matchers with org.scalaexercises.defin
     result should be(res0)
   }
 
-  /** `exists` will determine if a predicate is valid for some members of a *Traversable*.
+  /** `exists` will determine if a predicate is valid for some members of a `Traversable`.
     */
   def existsFunctionTraversables(res0: Boolean) {
     val list = List(87, 44, 5, 4, 200, 10, 39, 100)
@@ -410,7 +410,7 @@ object Traversables extends FlatSpec with Matchers with org.scalaexercises.defin
     result should be(res0)
   }
 
-  /** `count` will count the number of elements that satisfy a predicate in a *Traversable*.
+  /** `count` will count the number of elements that satisfy a predicate in a `Traversable`.
     */
   def countFunctionTraversables(res0: Int) {
     val list = List(87, 44, 5, 4, 200, 10, 39, 100)
@@ -473,7 +473,7 @@ object Traversables extends FlatSpec with Matchers with org.scalaexercises.defin
   def reduceLeftFunctionTraversables(res0: Int, res1: String) {
     val intList = List(5, 4, 3, 2, 1)
     intList.reduceLeft {
-      _ + _
+      _ - _
     } should be(res0)
 
     val stringList = List("Do", "Re", "Me", "Fa", "So", "La", "Te", "Do")
@@ -487,7 +487,7 @@ object Traversables extends FlatSpec with Matchers with org.scalaexercises.defin
   def reduceRightFunctionTraversables(res0: Int, res1: String) {
     val intList = List(5, 4, 3, 2, 1)
     intList.reduceRight {
-      _ + _
+      _ - _
     } should be(res0)
 
     val stringList = List("Do", "Re", "Me", "Fa", "So", "La", "Te", "Do")
@@ -536,7 +536,7 @@ object Traversables extends FlatSpec with Matchers with org.scalaexercises.defin
     list2.transpose should be(List(res3))
   }
 
-  /** `mkString` will format a *Traversable* using a given string as the delimiter.
+  /** `mkString` will format a `Traversable` using a given string as the delimiter.
     */
   def mkStringFunctionTraversables(res0: String) {
     val list = List(1, 2, 3, 4, 5)
@@ -549,15 +549,4 @@ object Traversables extends FlatSpec with Matchers with org.scalaexercises.defin
     val list = List(1, 2, 3, 4, 5)
     list.mkString(">", ",", "<") should be(res0)
   }
-
-  /** `addString` will take a StringBuilder to add the contents of list into the builder.
-    */
-  def addStringFunctionTraversables(res0: String) {
-    val stringBuilder = new StringBuilder()
-    val list = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15)
-    stringBuilder.append("I want all numbers 6-12: ")
-    list.filter(it => it > 5 && it < 13).addString(stringBuilder, ",")
-    stringBuilder.mkString should be(res0)
-  }
-
 }
